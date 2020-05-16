@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { ExerDataBindingComponent } from './exer-data-binding/exer-data-binding.component';
+import { ExerContadorComponent } from './exer-contador/exer-contador.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
+    ExerDataBindingComponent,
+    ExerContadorComponent,
     
   ],
   imports: [

@@ -7,8 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  exemplo = 'Carro';
+  title = 'Seja bem vindo!';
+  Conta = 0;
 
   constructor() {
 
+  }
+
+  eventoRecebido($event){
+    console.log('App component: Evento Recebido!', $event);
+
+  }
+
+  contaRecebida($event){
+    console.log('Valor da mudança é: ', $event);
+    
   }
 }

@@ -1,6 +1,22 @@
-<app-header></app-header>
+<app-header 
 
-<app-home></app-home>
+[title]="title"
+
+></app-header>
+
+<app-exer-contador
+
+[contador]="Conta"
+(contando)="contaRecebida($event)"
+
+></app-exer-contador>
+
+<app-exer-data-binding 
+
+[palavra]="exemplo"
+(clicado)="eventoRecebido($event)"
+
+></app-exer-data-binding>
 
 <app-footer></app-footer>
 
