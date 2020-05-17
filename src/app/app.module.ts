@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ExerDataBindingComponent } from './exer-data-binding/exer-data-binding.component';
 import { ExerContadorComponent } from './exer-contador/exer-contador.component';
 import { ExerDiretivasComponent } from './exer-diretivas/exer-diretivas.component';
+import { ExerNgclassComponent } from './exer-ngclass/exer-ngclass.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ExerDiretivasComponent } from './exer-diretivas/exer-diretivas.componen
     ExerDataBindingComponent,
     ExerContadorComponent,
     ExerDiretivasComponent,
+    ExerNgclassComponent,
     
   ],
   imports: [
