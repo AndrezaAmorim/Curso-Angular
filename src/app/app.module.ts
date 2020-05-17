@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ExerDataBindingComponent } from './exer-data-binding/exer-data-binding.component';
 import { ExerContadorComponent } from './exer-contador/exer-contador.component';
+import { ExerDiretivasComponent } from './exer-diretivas/exer-diretivas.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ExerContadorComponent } from './exer-contador/exer-contador.component';
     FooterComponent,
     ExerDataBindingComponent,
     ExerContadorComponent,
+    ExerDiretivasComponent,
     
   ],
   imports: [
