@@ -1,0 +1,75 @@
+<p>Valor dentro de deveExibir: {{deveExibir}}</p>
+
+<button (click)='trocarValor()'>Trocar Valor</button>
+
+
+<!-- sintaxe abreviada -->
+
+<div *ngIf='deveExibir, else elseBlock'>
+    Olá, estou dentro do ngIf!
+</div>
+
+<ng-template #elseBlock>
+    Vou exibir quando deveExibir for False
+</ng-template>
+
+<div *ngIf='soma(5, 7) > 10'>
+    Exibe baseado na soma
+</div>
+
+<!-- sintaxe expandida -->
+
+<ng-template [ngIf]='deveExibir'>
+    <div>
+        Content to render when condition is true
+    </div>
+</ng-template>
+
+<!-- Sintaxe com then e else -->
+
+<div *ngIf='deveExibir, then thenBlock else elseBlock2'></div>
+<ng-template #thenBlock> Quando é True</ng-template>
+<ng-template #elseBlock2> Quando é False </ng-template>
+
+
+<hr>
+
+
+<ul>
+    <div *ngFor='let memes of memes'>
+        {{memes.categoria}} 
+        <div *ngFor="let images of memes.memes; even as pares">
+           <img [src]= "PREFIXO_IMAGEM + images.imagemURL" *ngIf="pares; else blockPar" >
+           <ng-template #blockPar>
+            <h2 >PAR</h2>
+           </ng-template>
+           
+        </div>
+        
+    </div>
+
+    
+</ul>
+
+
+
+<hr>
+
+
+
+<ul>
+    <li *ngFor='let fruta of listaFrutas'> {{fruta}} </li>
+</ul>
+
+<br>
+
+<ul>
+    <li *ngFor="let carro of carrosLista; index as index"> 
+       {{index + 1}} - Placa: {{carro.placa}} - Cor: {{carro.cor}} 
+       
+    </li>
+
+    
+</ul>
+
+<!-- let index = index é a mesma coisa que index as index -->
