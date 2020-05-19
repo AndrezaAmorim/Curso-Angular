@@ -13,6 +13,9 @@ import { ExerNgclassComponent } from './share/components/exer-ngclass/exer-ngcla
 import { ExerPipesComponent } from './share/components/exer-pipes/exer-pipes.component';
 import { FooterComponent } from './share/components/footer/footer.component';
 import { HeaderComponent } from './share/components/header/header.component';
+import { LoginComponent } from './login/login.component';
+import { ExtratoComponent } from './extrato/extrato.component';
+import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -31,6 +34,12 @@ registerLocaleData(localePt, 'pt');
     ExerNgclassComponent,
 
     ExerPipesComponent,
+
+    LoginComponent,
+
+    ExtratoComponent,
+
+    NaoEncontradoComponent,
   ],
   imports: [
     BrowserModule,
