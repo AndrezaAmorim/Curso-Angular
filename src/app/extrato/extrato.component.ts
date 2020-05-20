@@ -31,8 +31,6 @@ export class ExtratoComponent implements OnInit {
     this.estacarregando = true;
     this.erroNoCarregamento = false;
 
-    const page = 1;
-
     this.extratoService.getTransacoes(this.page)
     .pipe(
       take(1),
