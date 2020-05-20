@@ -1,22 +1,42 @@
-<div class="container">
-  <table class="table table-hover">
-    <tr>
-      <th> ID </th>
-      <th> Data </th>
-      <th> Descrição </th>
-      <th> Valor </th>
-      <th> Categoria </th>
-    </tr>
+<div class="container text-center p-5">
 
-    <tr *ngFor="let transacao of transacoes">
-      <td> {{transacao.id}} </td>
-      <td> {{transacao.data | date}} </td>
-      <td> {{transacao.descricao}} </td>
-      <td> {{transacao.valor | currency: 'BRL'}} </td>
-      <td> {{transacao.categoria}} </td>
+  <div class="spinner-border" role="status" *ngIf='estacarregando'>
+    <span class="sr-only">Loading...</span> 
+  </div>
+  
+  <div *ngIf="erroNoCarregamento">
+    <h2>Deu Erro :(</h2>
+    <button (click)='carregarExtrato()'> Tentar novamente </button>
+  </div>
+  
+  <div *ngIf="!estacarregando && !erroNoCarregamento">
+    <div class="stylePosition p-3">
+      <button (click)='paginaAnterior()' [disabled]="page== 1" class="btn btn-primary"> Página Anterior </button>
+      <p><b> Página Atual: {{page}} </b></p>
+      <button (click)='proximaPagina()' class="btn btn-primary"> Próxima Página </button>
+    </div>  
+    <table class="table table-hover" >
+      <tr>
+        <th> ID </th>
+        <th> Data </th>
+        <th> Descrição </th>
+        <th> Valor </th>
+        <th> Categoria </th>
+      </tr>
+  
+      <tr *ngFor="let transacao of transacoes">
+        <td> {{transacao.id}} </td>
+        <td> {{transacao.data | date}} </td>
+        <td> {{transacao.descricao}} </td>
+        <td> {{transacao.valor | currency: 'BRL'}} </td>
+        <td> {{transacao.categoria}} </td>
+  
+      </tr>
+    </table>
+  </div>
 
-    </tr>
-  </table>
+
+
 
 </div>
 
