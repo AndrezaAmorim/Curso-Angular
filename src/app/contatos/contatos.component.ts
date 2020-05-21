@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
 
 import { Contato } from './contatos.interface';
@@ -17,7 +18,8 @@ export class ContatosComponent implements OnInit {
   erroNoCarregamento: boolean;
 
   constructor(
-    private contatoService: ContatosService
+    private contatoService: ContatosService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class ContatosComponent implements OnInit {
   carregarContatos(){
     this.estacarregando = true;
     this.erroNoCarregamento = false;
-    
+
     this.contatoService.getContatos()
     .pipe(
       take(1),
@@ -48,6 +50,10 @@ export class ContatosComponent implements OnInit {
   OnError(error){
     this.erroNoCarregamento = true;
     console.error(error);
+  }
+
+  irPraDetalhes(idContato: string){
+    this.router.navigate([`contatos/${idContato}`]);
   }
 
 }
