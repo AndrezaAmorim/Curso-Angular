@@ -1,5 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +14,17 @@ export class LoginComponent {
   @ViewChild('emailInput') emailInput: ElementRef;
   @ViewChild('passwordInput') passwordInput: ElementRef;
 
+  constructor(
+    private loginService: LoginService
+  ){}
+
   email: string;
   password: string;
+  estaCarregando: boolean;
+  erroNoLogin: boolean;
 
   OnSubmit(form){
+    this.erroNoLogin = false;
 
     if (!form.valid){
       form.controls.email.markAsTouched();
@@ -33,11 +43,29 @@ export class LoginComponent {
       return;
     }
 
-    console.log(form);
-    console.log(form.value);
-    console.log(this.email);
-    console.log(this.password);
+    this.login();
 
+    // console.log(form);
+    // console.log(form.value);
+    // console.log(this.email);
+    // console.log(this.password);
+
+  }
+
+  login(){
+    this.estaCarregando = true;
+    this.loginService.logar(this.email, this.password)
+      .pipe(
+        finalize(() => this.estaCarregando = false)
+      )
+      .subscribe(
+        response => {
+          console.log('Sucesso! Logou!');
+        },
+        error => {
+          this.erroNoLogin = true;
+        }
+      );
   }
 
   exibeErro(nomeControle: string, form: NgForm){
