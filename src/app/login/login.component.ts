@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 
 import { LoginService } from './login.service';
@@ -15,7 +16,8 @@ export class LoginComponent {
   @ViewChild('passwordInput') passwordInput: ElementRef;
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ){}
 
   email: string;
@@ -59,13 +61,17 @@ export class LoginComponent {
         finalize(() => this.estaCarregando = false)
       )
       .subscribe(
-        response => {
-          console.log('Sucesso! Logou!');
-        },
-        error => {
-          this.erroNoLogin = true;
-        }
+        response => this.OnLoginSuccess(),
+        error => this.onErrorLogin()
       );
+  }
+
+  OnLoginSuccess(){
+    this.router.navigate(['home']);
+  }
+
+  onErrorLogin(){
+    this.erroNoLogin = true;
   }
 
   exibeErro(nomeControle: string, form: NgForm){
