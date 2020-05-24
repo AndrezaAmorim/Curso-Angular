@@ -49,4 +49,8 @@ export class AuthService {
 
     return null;
   }
+
+  estaLogado(): boolean {
+    return this.getUsuario() && this.getToken() ? true : false;
+  }
 }
